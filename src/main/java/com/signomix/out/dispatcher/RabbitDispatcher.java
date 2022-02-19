@@ -37,7 +37,7 @@ public class RabbitDispatcher extends OutboundAdapter implements Adapter, Dispat
     @Override
     public void dispatch(Event event) throws DispatcherException {
         String eventClassName = event.getClass().getName();
-        if (eventMap.contains(eventClassName)) {
+        if (eventMap.contains(eventClassName)||eventMap.contains("*")) {
             try {
                 //channel.exchangeDeclare(exchangeName, "fanout");
                 channel.basicPublish(exchangeName, eventClassName, null, new EventDto(event).toJson().getBytes("UTF-8"));

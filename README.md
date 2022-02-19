@@ -1,1 +1,1 @@
-# signomix-event-library
+# signomix-common-library
